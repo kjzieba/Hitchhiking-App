@@ -1,0 +1,96 @@
+section {
+    display: grid;
+    grid-template-rows: repeat(1 1fr);
+    grid-gap: 1em;
+    padding: 1em;
+    overflow: auto;
+    justify-content: center;
+    
+
+    width: 80%;
+    height: 80%;
+}
+
+section::-webkit-scrollbar {
+    background-color: #FFFFFF;
+    border-radius: 2em;
+}
+
+section::-webkit-scrollbar-thumb {
+    background-color: #00C1FF;
+    border-radius: 2em;
+}
+
+.search {
+    width: 80%;
+    height: 80%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.29);
+    margin-bottom: 1em;
+}
+
+button {
+    width: auto;
+}
+
+.info-time-place {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info-passengers-driver {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+}
+
+.info-passengers-driver>p{
+    margin-right: 1em;
+}
+
+#driver {
+    margin-left: 8em;
+}
+
+.info-badges {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.info-badges>img {
+   width: 2em;
+}
+
+.search-results>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.29);
+    margin-bottom: 1em;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .search{
+        width: 90%;
+    }
+    .search-results>div{
+        padding: 0.5em;
+    }
+}

@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(117.18deg, #32F62C 0%, rgba(50, 246, 44, 0.53125) 63.81%, rgba(50, 246, 44, 0) 112.35%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 50%;
+    line-height: 0.5em;
+
+    font-family: 'Inter';
+    font-style: normal;
+
+    color: #FFFFFF;
+    text-shadow: 0px 6px 6px rgba(0, 0, 0, 0.25);
+}
+
+.logo-text>h1 {
+    font-size: 5em;
+}
+
+.logo-text>p {
+    font-size: 1.5em;
+    margin-left: 5%;
+}
+
+.login-container {
+    width: 50%;
+    font-family: 'Inter';
+}
+
+.register-container {
+    width: 50%;
+    font-family: 'Inter';
+}
+
+.register-form, .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: fit-content;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1em;
+}
+
+.login-form>h2 {
+    width: 70%;
+}
+
+button {
+    background: #00C1FF;
+    border-radius: 0.75em;
+    filter: drop-shadow(6px 6px 6px rgba(0, 0, 0, 0.25));
+    cursor: pointer;
+
+    width: 20%;
+    border: none;
+    color: black;
+    margin: 1em;
+    font-family: 'Inter';
+    line-height: 2em;
+    font-weight: 400;
+}
+
+hr.solid-line{
+    border-top: 1px solid rgba(0, 0, 0, 0.29);
+    width: 70%;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    background-color: transparent;
+    padding: 1em;
+    margin: 1em;
+    width: 50%;
+    border-radius: 1em;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(117.18deg, #32F62C 0%, rgba(50, 246, 44, 0.53125) 63.81%, rgba(50, 246, 44, 0) 112.35%);
+    font-family: 'Inter';
+}
+
+.add {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1em;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: left;
+    font-family: 'Inter';
+    width: 90%;
+    
+    border-bottom: 1px solid rgba(0, 0, 0, 0.29);
+    margin-bottom: 2em;
+}
+
+.nav>h2 {
+    line-height: 0.5em;
+    margin: 0;
+}
+
+.nav>.logo-text {
+    width: 10%;
+    height: fit-content;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+    position: relative;
+}
+
+li {
+    margin-left: 1em;
+}
+
+li:first-child{
+    position: fixed;
+    left: 8vw;
+}
+
+.nav>ul>li>img{
+    width: 2em;
+    padding-top: 0.25em;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.search-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1em;
+}
+
+.search-form>button {
+    width: 70%;
+}
+
+.add>h2{
+    width: 70%;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .container {
+        flex-direction: column;
+        justify-content: start;
+    }
+    * {
+        font-size: 36px;
+    }
+    .logo-text {
+        width: 100%;
+
+    }
+    .login-container {
+        margin-top: 10vh;
+        width: 100%;
+    }
+    .register-container {
+        width: 100%;
+    }
+    .login-form {
+        margin: auto;
+    }
+    .register-form{
+        margin: auto;
+    }
+    .logo-text>h1 {
+        margin-bottom: 0.4em;
+    }
+    .login-form>h2 {
+        font-size: 150%;
+    }
+    .register-form>h2 {
+        font-size: 150%;
+    }
+
+
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-form {
+        margin-bottom: 1em;
+    }
+}
