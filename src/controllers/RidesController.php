@@ -19,6 +19,10 @@ class RidesController extends AppController {
         $date = $_POST["date"];
         $passengers = $_POST["passengers"];
 
+        if(empty($start) or empty($destination) or empty($date) or empty($passengers)){
+            return $this->render('home');
+        }
+
         $rideRepository = new RideRepository();
         $rides = $rideRepository->getRides($start, $destination, $passengers, $date);
         if ($rides != null) {
@@ -38,7 +42,7 @@ class RidesController extends AppController {
         $date = $_POST["date"];
         $time = $_POST["time"];
         $availableSeats = $_POST["available-seats"];
-        $ride = new Ride($start, $destination, $availableSeats, $date, $time);
+        $ride = new Ride($start, $destination, $availableSeats, $date, $time,7);
 
         $rideRepository->addRide($ride);
 
