@@ -6,7 +6,7 @@ require_once __DIR__ . '/../models/User.php';
 class UserRepository extends Repository {
     public function getUser(string $email): ?User {
         $statement = $this->database->connect()->prepare(
-            "select * from users u JOIN user_details ud on u.id_user_details = ud.id where u.email = :email"
+            "select * from users u join user_details ud on u.id_user_details = ud.id where u.email = :email"
         );
 
         $statement->bindParam(":email", $email, PDO::PARAM_STR);

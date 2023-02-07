@@ -6,21 +6,7 @@
 </head>
 <body>
 <div class="main-container">
-    <div class="nav">
-        <ul>
-            <li>
-                <div class="logo-text">
-                    <h2>RideShare</h2>
-                </div>
-            </li>
-            <li>
-                <h2>John</h2>
-            </li>
-            <li>
-                <img src="public/img/settings.svg" alt="settings">
-            </li>
-        </ul>
-    </div>
+    <?php include ('public/views/components/navbar.php'); ?>
     <div class="content">
         <div class="search">
             <form class="search-form" action="search" method="post">

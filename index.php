@@ -9,7 +9,7 @@ Router::get('', 'DefaultController');
 Router::get('index', 'DefaultController');
 Router::post('login', 'SecurityController');
 Router::post('register', 'SecurityController');
-Router::get('home', 'RidesController');
+Router::get('home', 'DefaultController');
 Router::get('search', 'RidesController');
 Router::get('ride', 'RidesController');
 Router::run($path);
