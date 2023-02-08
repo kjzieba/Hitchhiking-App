@@ -17,4 +17,6 @@ Router::get('rides', 'RidesController');
 Router::get('details', 'RidesController');
 Router::get('join', 'RidesController');
 Router::post('searchUserRides', 'RidesController');
+Router::get('admin', 'SecurityController');
+Router::post('delete', 'SecurityController');
 Router::run($path);

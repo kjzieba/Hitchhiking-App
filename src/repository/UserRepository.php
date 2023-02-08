@@ -94,4 +94,50 @@ class UserRepository extends Repository {
             $id
         ]);
     }
+
+    public function getAllUsers():?array{
+        $statement = $this->database->connect()->prepare(
+            "select *
+                    from users u
+                        join user_details ud on u.id_user_details = ud.id
+                        join roles r on u.id = r.id_user"
+        );
+
+        $statement->execute();
+
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if (!$users) {
+            return null;
+        }
+
+        $returnUsers = [];
+
+        foreach ($users as $user){
+            $returnUsers[] = new User(
+                $user['email'],
+                $user['password'],
+                $user['name'],
+                $user['surname'],
+                $user['id_user'],
+                $user['role']
+            );
+        }
+        return $returnUsers;
+    }
+
+    public function deleteUser($id) {
+        $statement = $this->database->connect()->prepare(
+            "delete from users where id=:id returning id_user_details"
+        );
+        $statement->bindParam(":id", $id, PDO::PARAM_INT);
+        $statement->execute();
+        $id_user_details = $statement->fetchColumn();
+
+        $statement = $this->database->connect()->prepare(
+            "delete from user_details where id=:id"
+        );
+        $statement->bindParam(":id", $id_user_details, PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
