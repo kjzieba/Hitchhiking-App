@@ -7,10 +7,10 @@
 </head>
 <body>
 <div class="main-container">
-    <?php include ('public/views/components/navbar.php'); ?>
+    <?php include('public/views/components/navbar.php'); ?>
     <div class="add-ride">
         <div class="head">
-            <a href="home">
+            <a class="a-btn" href="home">
                 <h2> <-- </h2>
             </a>
             <h2>Add ride</h2>

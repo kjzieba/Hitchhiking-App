@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="main-container">
-    <?php include ('public/views/components/navbar.php'); ?>
+    <?php include('public/views/components/navbar.php'); ?>
     <div class="content">
         <div class="search">
             <form class="search-form" action="search" method="post">

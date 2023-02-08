@@ -29,6 +29,9 @@ class SecurityController extends AppController {
             return $this->render('login', ['messages' => ['Invalid password']]);
         }
 
+        setcookie("user", $user->getName(), time() + 60 * 20, "/");
+        setcookie("email", $email, time() + 60 * 20, "/");
+
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
@@ -58,6 +61,20 @@ class SecurityController extends AppController {
         $user = new User($email, $hashedPassword, $name, $surname);
         $userRepository->addUser($user);
 
+        setcookie("user", $name, time() + 60 * 20, "/");
+        setcookie("email", $email, time() + 60 * 20, "/");
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/home");
+    }
+
+    public function logout() {
+        if (isset($_COOKIE['user'])) {
+            setcookie("user", $_COOKIE["user"], time() - 3600, "/");
+            setcookie("email", $_COOKIE["email"], time() - 3600, "/");
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }

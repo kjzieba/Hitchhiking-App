@@ -26,13 +26,40 @@ class RideRepository extends Repository {
             $returnRides[] = new Ride(
                 $ride['start'],
                 $ride['destination'],
-                $ride['available_seats'],
+                $ride['number_of_seats'],
                 $ride['date'],
                 $ride['time'],
-                $ride['id_added_by']
+                $ride['id'],
+                $ride['id_added_by'],
             );
         }
+
         return $returnRides;
+    }
+
+    public function getRideByID(string $id): ?Ride {
+        $statement = $this->database->connect()->prepare(
+            "select * from rides where id=:id"
+        );
+
+        $statement->bindParam(":id", $id, PDO::PARAM_STR);
+        $statement->execute();
+
+        $ride = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (!$ride) {
+            return null;
+        }
+
+        return new Ride(
+            $ride['start'],
+            $ride['destination'],
+            $ride['number_of_seats'],
+            $ride['date'],
+            $ride['time'],
+            $ride['id'],
+            $ride['id_added_by']
+        );
     }
 
     public function addRide(Ride $ride) {
@@ -46,7 +73,7 @@ class RideRepository extends Repository {
             $ride->getAvailableSeats(),
             $ride->getDate(),
             $ride->getTime(),
-            7
+            $ride->getIdDriver()
         ]);
     }
 }

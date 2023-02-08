@@ -3,8 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/rides.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <script type="text/javascript" src="./public/js/details.js" defer></script>
-    <title>Search results</title>
+    <title>My Rides</title>
 </head>
 <body>
 <div class="main-container">
@@ -14,7 +13,8 @@
             <a class="a-btn" href="home">
                 <h2> <-- </h2>
             </a>
-            <h2>Search results</h2>
+            <h2>My Rides</h2>
+            <input name="search-field" type="text" placeholder="search">
         </div>
         <section class="search-results">
             <?php if ($rides != null): ?>
@@ -36,13 +36,11 @@
                             <img src="public/img/no-pets.jpg">
                             <img src="public/img/no-smoking.jpg">
                         </div>
-                        <form action="details/<?= $ride->getID() ?>" method="get">
-                            <button>See details</button>
-                        </form>
+                        <button>See details</button>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                Unfortunately no rides were found
+                You have no rides. You can add your ride or join others' rides!
             <?php endif; ?>
         </section>
     </div>

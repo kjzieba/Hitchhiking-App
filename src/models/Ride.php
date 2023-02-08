@@ -6,15 +6,22 @@ class Ride {
     private $available_seats;
     private $date;
     private $time;
-    private $ID;
+    private $id;
+    private $id_driver;
 
-    public function __construct($start, $destination, $available_seats, $date, $time, $ID) {
+    public function __construct($start, $destination, $available_seats, $date, $time, $id, $id_driver) {
         $this->start = $start;
         $this->destination = $destination;
         $this->available_seats = $available_seats;
         $this->date = $date;
         $this->time = $time;
-        $this->ID = $ID;
+        $this->id = $id;
+        $this->id_driver = $id_driver;
+    }
+
+    public function getDriver(): string {
+        $userRepository = new UserRepository();
+        return $userRepository->getUserByID($this->id_driver)->getName();
     }
 
     public function getStart() {
@@ -57,13 +64,19 @@ class Ride {
         $this->time = $time;
     }
 
-    public function getID() {
-        return $this->ID;
+    public function getId() {
+        return $this->id;
     }
 
-    public function setID($ID): void {
-        $this->ID = $ID;
+    public function setId($id): void {
+        $this->id = $id;
     }
 
+    public function getIdDriver() {
+        return $this->id_driver;
+    }
 
+    public function setIdDriver($id_driver): void {
+        $this->id_driver = $id_driver;
+    }
 }
