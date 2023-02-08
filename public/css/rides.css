@@ -5,7 +5,7 @@ section {
     padding: 1em;
     overflow: auto;
     justify-content: center;
-    
+
 
     width: 80%;
     height: 80%;
@@ -52,12 +52,12 @@ button {
 }
 
 .info-passengers-driver {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
-.info-passengers-driver>p{
+.info-passengers-driver > p {
     margin-right: 1em;
 }
 
@@ -72,11 +72,11 @@ button {
     margin: 0;
 }
 
-.info-badges>img {
-   width: 2em;
+.info-badges > img {
+    width: 2em;
 }
 
-.search-results>div {
+.search-results > div {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -86,11 +86,36 @@ button {
     margin-bottom: 1em;
 }
 
+.search > .head > h2 {
+    margin-right: 6em;
+}
+
+.details {
+    font-family: 'Inter';
+    display: none;
+    position: fixed;
+    top: 25%;
+    left: 40%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1em;
+    padding: 1em;
+}
+
 @media only screen and (max-device-width: 480px) {
-    .search{
+    .search {
         width: 90%;
     }
-    .search-results>div{
+
+    .search-results > div {
         padding: 0.5em;
+    }
+
+    .search > .head > h2 {
+        margin-right: 1em;
+    }
+
+    .details {
+        left: 20%;
     }
 }
