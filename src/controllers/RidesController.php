@@ -65,7 +65,13 @@ class RidesController extends AppController {
         }
 
         if (!$this->isPost()) {
-            return $this->render('my-rides');
+            $ridesRepository = new RideRepository();
+            $userRepository = new UserRepository();
+            $id_user = $userRepository->getUser($_COOKIE['email'])->getId();
+            $rides = $ridesRepository->getUserRides($id_user);
+
+
+            return $this->render('my-rides', ['rides' => $rides]);
         }
     }
 
@@ -77,8 +83,8 @@ class RidesController extends AppController {
         }
     }
 
-    public function join($id_ride){
-        if(!isset($_COOKIE['user'])){
+    public function join($id_ride) {
+        if (!isset($_COOKIE['user'])) {
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/");
         }
@@ -88,7 +94,7 @@ class RidesController extends AppController {
             $id_user = $userRepository->getUser($_COOKIE['email'])->getId();
             $seats_left = $ridesRepository->getRideByID($id_ride)->getAvailableSeats();
 
-            if($seats_left > 0){
+            if ($seats_left > 0) {
                 $ridesRepository->joinRide($id_user, $id_ride);
             }
 
@@ -96,6 +102,39 @@ class RidesController extends AppController {
 
             $url = "http://$_SERVER[HTTP_HOST]";
             header("Location: {$url}/home");
+        }
+    }
+
+    public function searchUserRides() {
+        $contentType = isset($_SERVER['CONTENT_TYPE']) ? trim($_SERVER['CONTENT_TYPE']) : "";
+
+        $headerCookies = explode('; ', getallheaders()['Cookie']);
+
+        $cookies = array();
+
+        foreach ($headerCookies as $itm) {
+            list($key, $val) = explode('=', $itm, 2);
+            $cookies[$key] = $val;
+        }
+
+        if (!isset($cookies['user'])) {
+            http_response_code(403);
+        }
+
+        if ($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            $rideRepository = new RideRepository();
+            $userRepository = new UserRepository();
+            $email = $cookies['email'];
+            $email = str_replace("%40", '@', $email);
+            $userID = $userRepository->getUser($email)->getId();
+
+            echo json_encode($rideRepository->getRidesByStartOrDestination($decoded['search'], $userID));
         }
     }
 }

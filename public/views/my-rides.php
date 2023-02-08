@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/rides.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <script type="text/javascript" src="./public/js/search.js" defer></script>
     <title>My Rides</title>
 </head>
 <body>
@@ -46,3 +47,25 @@
     </div>
 </div>
 </body>
+
+<template id="ride-template">
+    <div id="">
+        <div class="info-time-place">
+            <p id="time1">time</p>
+            <p id="start">start</p>
+            <p> -> </p>
+            <p id="time2">time</p>
+            <p id="destination">destination</p>
+        </div>
+        <div class="info-passengers-driver">
+            <p id="availableSeats">availableSeats</p>
+            <p>seats left</p>
+            <p id="driver">driver</p>
+        </div>
+        <div class="info-badges">
+            <img src="public/img/no-pets.jpg">
+            <img src="public/img/no-smoking.jpg">
+        </div>
+        <button>See details</button>
+    </div>
+</template>

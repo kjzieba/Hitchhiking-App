@@ -3,7 +3,6 @@
     <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <link rel="stylesheet" type="text/css" href="public/css/rides.css">
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
-    <script type="text/javascript" src="./public/js/details.js" defer></script>
     <title>Search results</title>
 </head>
 <body>
