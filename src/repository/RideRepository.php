@@ -101,10 +101,10 @@ class RideRepository extends Repository {
 
     public function getUserRides($id_user): ?array {
         $statement = $this->database->connect()->prepare(
-            "select * from all_rides where id_added_by=:id"
+            "select * from users_rides where id_user=:id_user or id_added_by=:id_user"
         );
 
-        $statement->bindParam(":id", $id_user, PDO::PARAM_STR);
+        $statement->bindParam(":id_user", $id_user, PDO::PARAM_STR);
         $statement->execute();
 
         $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -126,26 +126,6 @@ class RideRepository extends Repository {
             );
         }
 
-        $statement = $this->database->connect()->prepare(
-            "select * from rides_passengers full outer join rides r on r.id = rides_passengers.id_ride where id_user=:id"
-        );
-
-        $statement->bindParam(":id", $id_user, PDO::PARAM_STR);
-        $statement->execute();
-
-        $rides = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($rides as $ride) {
-            $returnRides[] = new Ride(
-                $ride['start'],
-                $ride['destination'],
-                $ride['number_of_seats'],
-                $ride['date'],
-                $ride['time'],
-                $ride['id'],
-                $ride['id_added_by'],
-            );
-        }
         return $returnRides;
     }
 

@@ -58,7 +58,7 @@ class SecurityController extends AppController {
             return $this->render('register', ['messages' => ['This e-mail address is taken']]);
         }
 
-        $user = new User($email, $hashedPassword, $name, $surname);
+        $user = new User($email, $hashedPassword, $name, $surname, -1, -1);
         $userRepository->addUser($user);
 
         setcookie("user", $name, time() + 60 * 20, "/");
