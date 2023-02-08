@@ -34,10 +34,7 @@
                         <img src="/public/img/no-pets.jpg">
                         <img src="/public/img/no-smoking.jpg">
                     </div>
-                    <div class="passengers">
-                        Passengers
-                    </div>
-                    <form action="" method="get">
+                    <form action="../join/<?= $ride->getID() ?>" method="post">
                         <button>Join</button>
                     </form>
                 </div>

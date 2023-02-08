@@ -21,7 +21,6 @@ class UserRepository extends Repository {
         if (!$user) {
             return null;
         }
-
         return new User(
             $user['email'],
             $user['password'],

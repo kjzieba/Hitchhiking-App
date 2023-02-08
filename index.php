@@ -15,4 +15,5 @@ Router::get('search', 'RidesController');
 Router::get('ride', 'RidesController');
 Router::get('rides', 'RidesController');
 Router::get('details', 'RidesController');
+Router::get('join', 'RidesController');
 Router::run($path);

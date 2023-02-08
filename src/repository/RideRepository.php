@@ -76,4 +76,26 @@ class RideRepository extends Repository {
             $ride->getIdDriver()
         ]);
     }
+
+    public function joinRide(string $id_user, string $id_ride) {
+        $statement = $this->database->connect()->prepare(
+            "insert into rides_passengers (id_user, id_ride)    
+            values (?,?)"
+        );
+        $statement->execute([
+            $id_user,
+            $id_ride
+        ]);
+    }
+
+    public function updateAvailableSeats($id_ride){
+        $statement = $this->database->connect()->prepare(
+            "update rides SET number_of_seats=number_of_seats-1
+                    where id=:id_ride"
+        );
+
+        $statement->execute([
+            $id_ride
+        ]);
+    }
 }

@@ -76,4 +76,26 @@ class RidesController extends AppController {
             $this->render('details', ['ride' => $ride]);
         }
     }
+
+    public function join($id_ride){
+        if(!isset($_COOKIE['user'])){
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/");
+        }
+        if ($this->isPost()) {
+            $ridesRepository = new RideRepository();
+            $userRepository = new UserRepository();
+            $id_user = $userRepository->getUser($_COOKIE['email'])->getId();
+            $seats_left = $ridesRepository->getRideByID($id_ride)->getAvailableSeats();
+
+            if($seats_left > 0){
+                $ridesRepository->joinRide($id_user, $id_ride);
+            }
+
+            $ridesRepository->updateAvailableSeats($id_ride);
+
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/home");
+        }
+    }
 }
