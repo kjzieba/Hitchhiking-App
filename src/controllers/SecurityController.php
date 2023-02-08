@@ -78,4 +78,51 @@ class SecurityController extends AppController {
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/home");
     }
+
+    public function admin() {
+        if (!isset($_COOKIE['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/home");
+        }
+
+        if (!$this->isAdmin($_COOKIE['email'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/home");
+        }
+        $userRepository = new UserRepository();
+        $users = $userRepository->getAllUsers();
+        $this->render('admin', ['users' => $users]);
+
+    }
+
+    public function delete($id) {
+        if(!$this->isPost()){
+            $this->admin();
+        }
+
+        if (!isset($_COOKIE['user'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/home");
+        }
+
+        if (!$this->isAdmin($_COOKIE['email'])) {
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/home");
+        }
+
+        $userRepository = new UserRepository();
+        $userRepository->deleteUser($id);
+
+        $this->admin();
+    }
+
+    private function isAdmin($email): bool {
+        $userRepository = new UserRepository();
+        $userRole = $userRepository->getUser($email)->getRole();
+        if ($userRole != 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }
