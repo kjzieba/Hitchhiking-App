@@ -8,6 +8,7 @@ On RideShare you can look for rides or create your own and share your car on you
   - Joining rides from other users
   - Searching your added or joined rides
   - Browsing all rides that meet your requirement (starting location, destination, date)
+  - Removing harmful users as administrator
 
 ## Technologies used:
  - HTML
