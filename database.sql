@@ -77,6 +77,13 @@ SELECT rides_passengers.id_user,
 FROM rides_passengers
          FULL JOIN rides r ON r.id = rides_passengers.id_ride;
 
+
+INSERT INTO public.user_details (id, name, surname) VALUES (17, 'John', 'Smith');
+INSERT INTO public.user_details (id, name, surname) VALUES (18, 'Bob', 'Ross');
+
+INSERT INTO public.users (id, email, password, id_user_details) VALUES (10, 'test@email.com', '$2y$10$VF3dTif4uNiZVr21zREuEOUoTeaXD0Y1UIGnwxZ2RGn8G6GgMKW0.', 17);
+INSERT INTO public.users (id, email, password, id_user_details) VALUES (11, 'bob@email.com', '$2y$10$viej0.ILPBoCOTjjE6M4HOVtvW3IVg/b/GqWnH16.NH8JRRAAmT.y', 18);
+
 INSERT INTO public.rides (id, start, destination, number_of_seats, date, time, id_added_by) VALUES (8, 'Cracow', 'Warsaw', 4, '2023-02-28', '10:22:00', 10);
 INSERT INTO public.rides (id, start, destination, number_of_seats, date, time, id_added_by) VALUES (9, 'Warsaw', 'Cracow', 2, '2023-03-08', '18:21:00', 10);
 INSERT INTO public.rides (id, start, destination, number_of_seats, date, time, id_added_by) VALUES (10, 'Budapest', 'Prague', 2, '2023-03-12', '22:25:00', 10);
@@ -85,9 +92,3 @@ INSERT INTO public.rides_passengers (id_user, id_ride) VALUES (11, 10);
 
 INSERT INTO public.roles (role, id_user) VALUES (0, 10);
 INSERT INTO public.roles (role, id_user) VALUES (0, 11);
-
-INSERT INTO public.user_details (id, name, surname) VALUES (17, 'John', 'Smith');
-INSERT INTO public.user_details (id, name, surname) VALUES (18, 'Bob', 'Ross');
-
-INSERT INTO public.users (id, email, password, id_user_details) VALUES (10, 'test@email.com', '$2y$10$VF3dTif4uNiZVr21zREuEOUoTeaXD0Y1UIGnwxZ2RGn8G6GgMKW0.', 17);
-INSERT INTO public.users (id, email, password, id_user_details) VALUES (11, 'bob@email.com', '$2y$10$viej0.ILPBoCOTjjE6M4HOVtvW3IVg/b/GqWnH16.NH8JRRAAmT.y', 18);
